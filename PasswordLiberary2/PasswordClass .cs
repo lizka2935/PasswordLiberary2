@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PasswordLiberary2
@@ -16,27 +17,27 @@ namespace PasswordLiberary2
         public static int PasswordStrengthCheker(string password)
         {
             int a = 0;
-            if (password.Length > 7) 
+            if (Regex.Match(password, @"(?=.{7,}$)").Success) 
             {
                 a += 1;
             }
-            if ( password.Any(Char.IsDigit))
+            if (Regex.Match(password, @"(?=.*\d)").Success)
             {
                 a += 1;
             }
-            if (password.Any(Char.IsLower))
+            if (Regex.Match(password, @"(?=.*[a-z])").Success)
             {
                 a += 1;
             }
-            if (password.Any(Char.IsUpper))
+            if (Regex.Match(password, @"(?=.*[A-Z])").Success)
             {
                 a += 1;
             }
-            if (password.Intersect("#$%'&_.,/+=-*^!@").Count() > 0)
+            if (Regex.Match(password, @"[(\!\@\#\$\%\^\&\*\(\)\{\}\;\.\,\[\]\+\=\-\>\<]").Success)
             {
                 a += 1;
             }
-            if (password.Intersect("йцукенгшщзхъфывапролджэячсмитьбюЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ").Count() > 0) 
+            if (Regex.Match(password, @"(?=.*[а-я])|(?=.*[А-Я])").Success) 
             { 
                 throw new Exception("Использование элементов кириллицы") ;
             }

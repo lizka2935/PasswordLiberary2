@@ -67,7 +67,7 @@ namespace PasswordLiberaryTests
         }
 
         [TestMethod]
-        public void PasswordStrengthCheker_Three1_ReturnThree1()
+        public void PasswordStrengthCheker_Two_ReturnTwo()
         {
             //Arrange
             string password = "Passw";
